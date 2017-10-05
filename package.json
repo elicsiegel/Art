@@ -19,6 +19,7 @@
     "react-dom": "^16.0.0",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
     "traverson": "^6.0.3",
     "traverson-hal": "^6.0.0",
     "webpack": "^3.6.0"

@@ -6,7 +6,7 @@ export const RECEIVE_ARTISTS = 'RECEIVE_ARTISTS';
 export const receiveArtist = (artist) => {
   return {
     type: RECEIVE_ARTIST,
-    [artist.id]: artist 
+    artist: { [artist.id]: artist }
   }
 };
 
