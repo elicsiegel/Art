@@ -20,6 +20,13 @@ class Search extends React.Component {
     console.log(this.props.artistResults);
   }
 
+  calculateSlug(href) {
+    let slug = href.split('/')
+    let length = slug.length
+
+    return slug[length - 1]
+  }
+
   renderArtists() {
     if ( this.props.artistResults.length === 0 ) return;
     // if ( !this.props.searchResultsVisible ) return;
@@ -27,7 +34,7 @@ class Search extends React.Component {
     const artistsList = this.props.artistResults.map( artist => { 
       return(
           <li className="search-list-item" key={artist.title}>
-            <Link to={`/artists/${artist.title}`} className={'story-search-link'} onClick={this.props.clearSearchResults}>
+            <Link to={`/artists/${ this.calculateSlug(artist._links.permalink.href) }`} className={'story-search-link'} onClick={this.props.clearSearchResults}>
               
                 <img className="search-story-img" src={artist._links.thumbnail.href} />
                 <span>{ artist.title }</span>

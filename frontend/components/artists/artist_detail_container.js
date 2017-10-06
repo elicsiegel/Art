@@ -5,7 +5,8 @@ import { fetchArtist } from '../../actions/artists_actions';
 import { getSlugName } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => ({
-  artist_slug_name: getSlugName(ownProps.match.params.artistName)
+  artist_slug_name: ownProps.match.params.artistName,
+  artist: state.artists[ownProps.match.params.artistName]
 });
 
 const mapDispatchToProps = dispatch => ({
