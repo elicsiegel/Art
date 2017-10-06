@@ -10,7 +10,7 @@ export const receiveArtist = (artist) => {
   }
 };
 
-export const fetchArtist = id => dispatch => {
+export const fetchArtist = slug_name => dispatch => {
   // dispatch(requestData());
-  return APIUtil.fetchArtist(id).then(artist => dispatch(receiveArtist(artist)))
+  return APIUtil.fetchArtist(slug_name).then(artist => dispatch(receiveArtist(artist)))
 };

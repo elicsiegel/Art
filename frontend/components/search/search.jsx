@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Search extends React.Component {
 
@@ -19,10 +20,38 @@ class Search extends React.Component {
     console.log(this.props.artistResults);
   }
 
+  renderArtists() {
+    if ( this.props.artistResults.length === 0 ) return;
+    // if ( !this.props.searchResultsVisible ) return;
+    
+    const artistsList = this.props.artistResults.map( artist => { 
+      return(
+          <li className="search-list-item" key={artist.title}>
+            <Link to={`/artists/${artist.title}`} className={'story-search-link'} onClick={this.props.clearSearchResults}>
+              
+                <img className="search-story-img" src={artist._links.thumbnail.href} />
+                <span>{ artist.title }</span>
+                
+            </Link>
+          </li>
+      );
+    });
+
+    return (
+      <div className="stories-search-list-container">
+        <span>Artists</span>
+        <ul className="search-list sub-search-list">
+          {artistsList}
+        </ul>
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="search-bar">
         <input onChange={this.updateResults}/>
+        { this.renderArtists() }
       </div>
     );
   }
