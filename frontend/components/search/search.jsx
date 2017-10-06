@@ -11,11 +11,12 @@ class Search extends React.Component {
     const searchQuery = event.target.value;
   
     if ( searchQuery.length < 2 ) {
-      // this.props.clearSearchResults();
+      this.props.clearSearchResults();
       return;
     }
 
-    this.props.sendSearchQuery(searchQuery)
+    this.props.sendSearchQuery(searchQuery);
+    console.log(this.props.artistResults);
   }
 
   render() {

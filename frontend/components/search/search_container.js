@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import Search from './search';
-// import { relevantStorySearchResults, relevantUserSearchResults } from '../../reducers/selectors';
+import { selectArtistsFromSearchResults } from '../../reducers/selectors';
 // import { activateDropdown, deactivateDropdown } from '../../actions/dropdown_actions';
 import { sendSearchQuery, clearSearchResults } from '../../actions/search_actions';
 
 const mapStateToProps = state => {
   return {
-    // storyResults: relevantStorySearchResults(state),
+    artistResults: selectArtistsFromSearchResults(state.search),
     // userResults: relevantUserSearchResults(state),
     // searchBarVisible: state.dropdowns["searchBar"],
     // searchResultsVisible: state.dropdowns["searchResults"],
@@ -14,7 +14,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  // clearSearchResults: () => dispatch(clearSearchResults()),
+  clearSearchResults: () => dispatch(clearSearchResults()),
   sendSearchQuery: searchQuery => dispatch(sendSearchQuery(searchQuery)),
   // showSearchResults: () => dispatch(activateDropdown('searchResults')),
   // showSearchBar: () => dispatch(activateDropdown('searchBar')),
