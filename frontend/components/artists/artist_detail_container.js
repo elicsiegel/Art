@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 
 import ArtistDetail from './artist_detail';
 import { fetchArtist } from '../../actions/artists_actions';
+import { fetchArtworks } from '../../actions/artworks_actions';
 import { getSlugName } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -10,7 +11,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchArtist: (slug_name) => dispatch(fetchArtist(slug_name))
+  fetchArtist: (slug_name) => dispatch(fetchArtist(slug_name)),
+  fetchArtworks: (slug_name) => dispatch(fetchArtworks(slug_name))
 });
 
 export default connect(

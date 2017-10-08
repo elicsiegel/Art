@@ -9,6 +9,7 @@ class ArtistDetail extends Component {
     // get artworks related to that artist from the api
 
     this.props.fetchArtist(this.props.artist_slug_name)
+    this.props.fetchArtworks(this.props.artist_slug_name)
   }
 
   componentDidUpdate() {
