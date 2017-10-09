@@ -13,30 +13,71 @@ class ArtistDetail extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.props.match.params.artistName)
-    // debugger
-    // this.props.fetchArtist(this.props.artist_slug_name)
     if (this.props.artist === undefined) {
-      this.props.fetchArtist(getSlugName(this.props.match.params.artistName));
+      this.props.fetchArtist(this.props.match.params.artistName);
+      this.props.fetchArtworks(this.props.match.params.artistName);
+    }
+  }
+
+  calculateThumbnail() {
+    if (this.props.artist._links.thumbnail) {
+      return this.props.artist._links.thumbnail.href;
+    } else {
+      return '';
     }
   }
 
   renderArtistInfo() {
     if (!this.props.artist) return; 
-    console.log(this.props.artist)
+    console.log(this.props.artworks)
     return (
-      this.props.artist.name 
+      <div className="artist-container">
+        
+        <img src={this.calculateThumbnail()} />
+        
+        <div>
+          <h3>{this.props.artist.name + " (" + this.props.artist.birthday + " - " + this.props.artist.deathday + ")"}</h3>
+          <p>From: {this.props.artist.hometown}</p>
+          <p>Active in: {this.props.artist.location}</p>
+
+        </div>
+      </div>
+
+    );
+  }
+
+  renderArtworks() {
+    if (!this.props.artworks) return; 
+    if ( this.props.artworks.length === 0 ) return;
+    
+    const artworksList = this.props.artworks.map( artwork => { 
+      return(
+          <li key={artwork.title}>
+            <h4>{artwork.title}</h4>
+            <p>{artwork.date}</p>
+            <p>{artwork.medium}</p>
+            <p>{artwork.collecting_institution}</p>
+          </li>
+      );
+    });
+
+    return (
+      <div>
+        <span>Artworks</span>
+        <ul>
+          {artworksList}
+        </ul>
+      </div>
     );
   }
 
   render() {
     
     return (
-      <div>
-        Artist Bio:
+      <div className="artist-info">
         
         { this.renderArtistInfo() }
-
+        { this.renderArtworks() }
       </div>
     );
   }

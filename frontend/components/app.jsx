@@ -10,7 +10,7 @@ const App = (props) => (
     </div>
     <div>
       <Route path="/artists/:artistName" exact component={ArtistDetailContainer} />
-      Map will go here
+      
     </div>
   </div>
 );

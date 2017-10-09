@@ -58,7 +58,9 @@ class Search extends React.Component {
     return (
       <div className="search-bar">
         <input onChange={this.updateResults}/>
-        { this.renderArtists() }
+        <div className="search-list-container" onBlur={this.props.clearSearchResults}>
+          { this.renderArtists() }
+        </div>
       </div>
     );
   }
