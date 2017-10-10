@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { getSlugName } from '../../reducers/selectors';
 
+
 class ArtistDetail extends Component {
 
   componentDidMount() {
@@ -52,7 +53,7 @@ class ArtistDetail extends Component {
     
     const artworksList = this.props.artworks.map( artwork => { 
       return(
-          <li key={artwork.title}>
+          <li key={artwork.slug}>
             <img src={artwork._links.thumbnail.href} />
             <h4>{artwork.title}</h4>
             <p>{artwork.date}</p>
