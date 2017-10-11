@@ -8,3 +8,11 @@ export const fetchArtworks = (slug_name) => {
     error: (err) => console.log(err),
   });
 }
+
+export const fetchArtworkCoordinates = (artwork) => {
+  return $.ajax({
+      method: "GET",
+      url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + artwork.collecting_institution + "&key=AIzaSyARH5K7S8qrtyCRepaXClg3bV56uyyMkqM",
+      error: (err) => console.log(err),
+  })
+}

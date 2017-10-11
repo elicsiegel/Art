@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { getSlugName } from '../../reducers/selectors';
+import ArtworkMap from './artwork_map';
+
 
 
 class ArtistDetail extends Component {
@@ -30,7 +31,7 @@ class ArtistDetail extends Component {
 
   renderArtistInfo() {
     if (!this.props.artist) return; 
-    console.log(this.props.artworks)
+    
     return (
       <div className="artist-container">
         
@@ -69,6 +70,7 @@ class ArtistDetail extends Component {
         <ul>
           {artworksList}
         </ul>
+        <ArtworkMap artworks={this.props.artworks}/>
       </div>
     );
   }
@@ -80,6 +82,7 @@ class ArtistDetail extends Component {
         
         { this.renderArtistInfo() }
         { this.renderArtworks() }
+
       </div>
     );
   }

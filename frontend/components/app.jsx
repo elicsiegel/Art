@@ -10,7 +10,6 @@ const App = (props) => (
     </div>
     <div>
       <Route path="/artists/:artistName" exact component={ArtistDetailContainer} />
-      
     </div>
   </div>
 );

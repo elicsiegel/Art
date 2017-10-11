@@ -20,3 +20,4 @@ export const fetchArtworks = slug_name => dispatch => {
   // dispatch(requestData());
   return APIUtil.fetchArtworks(slug_name).then(artworks => dispatch(receiveArtworks(artworks, slug_name)))
 };
+
