@@ -70,7 +70,11 @@ class ArtistDetail extends Component {
         <ul>
           {artworksList}
         </ul>
-        <ArtworkMap artworks={this.props.artworks}/>
+        <ArtworkMap 
+          artworks={this.props.artworks}
+          artist_slug_name={this.props.artist_slug_name}
+          coordinates={this.props.coordinates}
+          fetchArtworkLocation={this.props.fetchArtworkLocation}/>
       </div>
     );
   }
