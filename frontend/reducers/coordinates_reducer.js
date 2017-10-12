@@ -12,7 +12,7 @@ const coordinatesReducer = (state = {}, action) => {
       const updatedCoords = Object.assign({}, state[action.artist], action.artwork); 
       nextState = Object.assign({}, state)
       nextState[action.artist] = updatedCoords
-      debugger
+     
       return Object.assign({}, state, nextState)
     default:
       return state;

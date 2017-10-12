@@ -18,7 +18,7 @@ export const clearArtworks = (artworks) => {
 };
 
 export const receiveCoordinates = (coordinates, artwork, artist) => {
-  debugger
+  
   return {
     type: RECEIVE_COORDINATES,
     artwork: {  [artwork.id]: coordinates.results[0].geometry.location },

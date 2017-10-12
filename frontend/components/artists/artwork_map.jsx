@@ -6,6 +6,7 @@ class ArtworkMap extends Component {
     // debugger
     // if (this.props.artist) {
       this.getCoordinates();
+      this.inItMap();
     // }
     // console.log(this.props);
   }
@@ -14,6 +15,14 @@ class ArtworkMap extends Component {
     // if (this.props.artist) {
     //   this.getCoordinates();
     // }
+  }
+
+  inItMap() {
+    this.map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 2,
+          center: {lat: 40.730610, lng: -73.935242},
+          mapTypeId: 'terrain'
+        });
   }
 
   getCoordinates() {
@@ -25,11 +34,10 @@ class ArtworkMap extends Component {
 
 
   render() {
+
     console.log(this.props.coordinates)
     return (
-      <div>
-        this.props.artworks
-      </div>
+      <div id="map"></div>
     );
   }
 }

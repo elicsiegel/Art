@@ -1,4 +1,10 @@
-const convertToArray = (results) => Object.keys(results).map(id => results[id]);
+export const convertToArray = (results) => {
+  if (results) {
+    return Object.keys(results).map(id => {
+      return {[id]: results[id]}
+    });
+  }
+};
 
 export const selectArtistsFromSearchResults = (results) => {
   var arrayResults = convertToArray(results)
