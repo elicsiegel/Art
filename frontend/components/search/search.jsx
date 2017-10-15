@@ -43,7 +43,6 @@ class Search extends React.Component {
           </li>
       );
     });
-
     return (
       <div className="stories-search-list-container">
         <span>Artists</span>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MarkerManager from '../../util/marker_manager';
 
 class ArtworkMap extends Component {
 
@@ -15,6 +16,14 @@ class ArtworkMap extends Component {
     // if (this.props.artist) {
     //   this.getCoordinates();
     // }
+    if (this.props.coordinates) {
+      console.log(this.props.coordinates);
+      this.MarkerManager.updateMarkers(this.props.coordinates);
+    }
+  }
+
+  handleClick(museum_coord) {
+    console.log(museum_coord);
   }
 
   inItMap() {
@@ -23,6 +32,10 @@ class ArtworkMap extends Component {
           center: {lat: 40.730610, lng: -73.935242},
           mapTypeId: 'terrain'
         });
+
+    this.MarkerManager = new MarkerManager(this.map, this.handleClick);
+
+    console.log(this.props.coordinates)
   }
 
   getCoordinates() {
@@ -35,9 +48,8 @@ class ArtworkMap extends Component {
 
   render() {
 
-    console.log(this.props.coordinates)
     return (
-      <div id="map"></div>
+      <div id="map" ref={ map => this.mapNode = map }></div>
     );
   }
 }

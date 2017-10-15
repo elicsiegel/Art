@@ -6,8 +6,10 @@ export const convertToArray = (results) => {
   }
 };
 
+const makeSearchResultsArray = (results) => Object.keys(results).map(id => results[id]);
+
 export const selectArtistsFromSearchResults = (results) => {
-  var arrayResults = convertToArray(results)
+  var arrayResults = makeSearchResultsArray(results)
   return arrayResults.filter((item) => item.type === "artist");
 }
 
