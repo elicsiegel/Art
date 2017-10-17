@@ -18,7 +18,7 @@ class ArtworkMap extends Component {
     // }
     if (this.props.coordinates) {
       console.log(this.props.coordinates);
-      this.MarkerManager.updateMarkers(this.props.coordinates);
+      this.MarkerManager.updateMarkers(this.props.coordinates, this.props.artworks);
     }
   }
 
