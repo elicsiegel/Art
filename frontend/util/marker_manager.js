@@ -29,7 +29,6 @@ export default class MarkerManager {
       }
     });
 
-    // debugger
     const lat_ling = newCoord[Object.keys(newCoord)[0]]
 
     const position = new google.maps.LatLng(lat_ling.lat, lat_ling.lng);

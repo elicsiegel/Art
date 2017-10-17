@@ -13,10 +13,7 @@ class ArtworkMap extends Component {
   }
 
   componentDidUpdate() {
-    // if (this.props.artist) {
-    //   this.getCoordinates();
-    // }
-    if (this.props.coordinates) {
+    if (this.props.coordinates && this.props.coordinates.length === this.props.artworks.length) {
       console.log(this.props.coordinates);
       this.MarkerManager.updateMarkers(this.props.coordinates, this.props.artworks);
     }
