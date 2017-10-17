@@ -5,18 +5,13 @@ import utf8 from 'utf8';
 class ArtworkMap extends Component {
 
   componentDidMount() {
-    // debugger
-    // if (this.props.artist) {
       this.requestsSent = 0;
       this.getCoordinates();
       this.inItMap();
-    // }
-    // console.log(this.props);
   }
 
   componentDidUpdate() {
     if (this.props.coordinates && this.requestsSent === this.props.artworks.length) {
-      // console.log(this.props.coordinates);
       this.MarkerManager.updateMarkers(this.props.coordinates, this.props.artworks);
     }
   }
@@ -27,8 +22,6 @@ class ArtworkMap extends Component {
 
   inItMap() {
     this.map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 2,
-          center: {lat: 40.730610, lng: -73.935242},
           mapTypeId: 'terrain'
         });
 

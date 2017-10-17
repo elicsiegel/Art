@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import ArtworkMap from './artwork_map';
 
-
-
 class ArtistDetail extends Component {
 
   componentDidMount() {
@@ -55,6 +53,7 @@ class ArtistDetail extends Component {
     if ( this.props.artworks.length === 0 ) return;
     
     const artworksList = this.props.artworks.map( artwork => { 
+
       return(
           <li key={artwork.slug}>
             <img src={artwork._links.thumbnail.href} />
