@@ -6,6 +6,7 @@ class ArtworkMap extends Component {
   componentDidMount() {
     // debugger
     // if (this.props.artist) {
+      this.requestsSent = 0;
       this.getCoordinates();
       this.inItMap();
     // }
@@ -13,8 +14,8 @@ class ArtworkMap extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.coordinates && this.props.coordinates.length === this.props.artworks.length) {
-      console.log(this.props.coordinates);
+    if (this.props.coordinates && this.requestsSent === this.props.artworks.length) {
+      // console.log(this.props.coordinates);
       this.MarkerManager.updateMarkers(this.props.coordinates, this.props.artworks);
     }
   }
@@ -38,7 +39,11 @@ class ArtworkMap extends Component {
   getCoordinates() {
     for (var i = 0; i < this.props.artworks.length; i++) {
       // fetch artwork coordinates
-      this.props.fetchArtworkLocation(this.props.artworks[i], this.props.artist_slug_name)
+      this.requestsSent += 1;
+      
+      if (this.props.artworks[i].collecting_institution !== "") {
+        this.props.fetchArtworkLocation(this.props.artworks[i], this.props.artist_slug_name)
+      }
     };
   }
 
