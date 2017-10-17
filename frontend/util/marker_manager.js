@@ -1,6 +1,7 @@
 export default class MarkerManager {
   constructor(map, handleClick) {
     this.map = map;
+    this.markerBounds = new google.maps.LatLngBounds();
     this.markers = {};
     this.handleClick = handleClick;
     this.markers = {};
