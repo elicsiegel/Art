@@ -55,6 +55,9 @@ export default class MarkerManager {
       museumId: Object.keys(newCoord)[0]
     });
 
+    this.markerBounds.extend(position);
+    this.map.fitBounds(this.markerBounds);
+
     marker.addListener('click', function() {
       infowindow.open(this.map, marker);
     });
