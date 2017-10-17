@@ -65,9 +65,9 @@ class ArtistDetail extends Component {
     });
 
     return (
-      <div>
-        <span>Artworks</span>
-        <ul>
+      <div className="artwork-container">
+        <h2>Artworks</h2>
+        <ul className="artwork-list">
           {artworksList}
         </ul>
         <ArtworkMap 

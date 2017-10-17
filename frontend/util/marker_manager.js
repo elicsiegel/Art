@@ -37,7 +37,7 @@ export default class MarkerManager {
             '<div id="siteNotice">'+
             '</div>'+
             '<h1 id="firstHeading" class="firstHeading">' + artwork.collecting_institution + '</h1>'+
-            '<div id="bodyContent">'+
+            '<div id="bodyContent">'+ artwork.title
             +
             '</div>'+
             '</div>';; 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MarkerManager from '../../util/marker_manager';
+import utf8 from 'utf8';
 
 class ArtworkMap extends Component {
 

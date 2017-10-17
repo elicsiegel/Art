@@ -17,3 +17,22 @@
 #map {
   height: 500px;
 }
+
+.artwork-container {
+  text-align: center;
+}
+
+.artwork-list {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.artwork-list li {
+  margin-left: 3px;
+  margin-right: 3px;
+  display: flex;
+  flex-direction: column;
+  /*text-align: center;*/
+}
