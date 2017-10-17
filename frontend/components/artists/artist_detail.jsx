@@ -34,14 +34,16 @@ class ArtistDetail extends Component {
     
     return (
       <div className="artist-container">
-        
-        <img src={this.calculateThumbnail()} />
-        
-        <div>
-          <h3>{this.props.artist.name + " (" + this.props.artist.birthday + " - " + this.props.artist.deathday + ")"}</h3>
-          <p>From: {this.props.artist.hometown}</p>
-          <p>Active in: {this.props.artist.location}</p>
+        <h2>Artist</h2>
+        <div className="artist-detail">
+          <img src={this.calculateThumbnail()} />
+          
+          <div>
+            <h3>{this.props.artist.name + " (" + this.props.artist.birthday + " - " + this.props.artist.deathday + ")"}</h3>
+            <p>From: {this.props.artist.hometown}</p>
+            <p>Active in: {this.props.artist.location}</p>
 
+          </div>
         </div>
       </div>
 
