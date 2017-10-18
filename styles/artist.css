@@ -29,8 +29,9 @@
 .artwork-list {
   display: flex;
   list-style: none;
-  flex-wrap: wrap;
+  /*flex-wrap: wrap;*/
   justify-content: center;
+  padding: 0px;
 }
 
 .artwork-list li {
@@ -38,8 +39,20 @@
   margin-right: 3px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.artwork-list li img {
+  max-width: 80%;
 }
 
 .artwork-list h4, p {
   margin: 2px;
+}
+
+.artwork-info {
+  margin-top: 10px;
+  max-width: 250px;
+  min-height: 200px;
 }

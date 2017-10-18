@@ -54,13 +54,20 @@ class ArtistDetail extends Component {
     
     const artworksList = this.props.artworks.map( artwork => { 
 
+    const background_photo = {
+      backgroundImage: 'url(' + artwork._links.thumbnail.href + ')',
+      backgroundSize: "cover"
+    }
+
       return(
           <li key={artwork.slug}>
             <img src={artwork._links.thumbnail.href} />
-            <h4>{artwork.title}</h4>
-            <p>{artwork.date}</p>
-            <p>{artwork.medium}</p>
-            <p>{artwork.collecting_institution}</p>
+            <div className="artwork-info">
+              <h4>{artwork.title}</h4>
+              <p>{artwork.date}</p>
+              <p>{artwork.medium}</p>
+              <p>{artwork.collecting_institution}</p>
+            </div>
           </li>
       );
     });
