@@ -56,7 +56,7 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search-bar">
-        <input onChange={this.updateResults}/>
+        <input placeholder="Type an artist..." onChange={this.updateResults}/>
         <div className="search-list-container" onBlur={this.props.clearSearchResults}>
           { this.renderArtists() }
         </div>

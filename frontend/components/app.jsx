@@ -5,6 +5,9 @@ import ArtistDetailContainer from './artists/artist_detail_container';
 
 const App = (props) => (
   <div>
+    <div className="title-div">
+      <h1>Art Map</h1>
+    </div>
     <div>
       <SearchContainer/>
     </div>
