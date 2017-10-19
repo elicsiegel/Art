@@ -9,7 +9,7 @@ export default class MarkerManager {
 
   updateMarkers(museum_coordinates, artworks) {
     Object.keys(this.markers)
-      .forEach((museumId) => this.removeMarker(this.markers[museumId]))
+      .forEach((museumId) => this.removeMarker(this.markers[museumId]));
     
     museum_coordinates.forEach(newCoord => this.createMarkerFromCoord(newCoord, artworks));
     google.maps.event.trigger(map, 'resize');

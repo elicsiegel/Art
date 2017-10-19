@@ -78,12 +78,21 @@ class ArtistDetail extends Component {
         <ul className="artwork-list">
           {artworksList}
         </ul>
-        <ArtworkMap 
+        
+      </div>
+    );
+  }
+
+  renderArtworkMap() {
+    if (!this.props.artworks) return; 
+    if ( this.props.artworks.length === 0 ) return;
+    
+    return (
+      <ArtworkMap 
           artworks={this.props.artworks}
           artist_slug_name={this.props.artist_slug_name}
           coordinates={this.props.coordinates}
           fetchArtworkLocation={this.props.fetchArtworkLocation}/>
-      </div>
     );
   }
 
@@ -94,6 +103,7 @@ class ArtistDetail extends Component {
         
         { this.renderArtistInfo() }
         { this.renderArtworks() }
+        { this.renderArtworkMap() }
 
       </div>
     );
