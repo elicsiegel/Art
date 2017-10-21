@@ -5,15 +5,26 @@ import utf8 from 'utf8';
 class ArtworkMap extends Component {
 
   componentDidMount() {
-      this.requestsSent = 0;
-      this.getCoordinates();
-      this.inItMap();
+    // debugger
+    this.inItMap();
+    this.MarkerManager.updateMarkers(this.props.coordinates, this.props.artworks);
+    // this.getCoordinates();
   }
 
   componentDidUpdate() {
-    if (this.props.coordinates && this.requestsSent === this.props.artworks.length) {
-      this.MarkerManager.updateMarkers(this.props.coordinates, this.props.artworks);
-    }
+    // write something so that if artist and artworks are already loaded the markers still need to be reset
+    // debugger
+    // if (this.props.coordinates)
+
+    // if (this.props.coordinates && this.props.coordinates.length === this.requestsSent) {
+    //   this.requestsSent = 0;
+      if (this.MarkerManager.artist_slug_name !== this.props.artist_slug_name) {
+    // debugger
+        this.inItMap();
+        this.MarkerManager.updateMarkers(this.props.coordinates, this.props.artworks);
+      }
+      // this.requestsSent = 0;
+    // }
   }
 
   handleClick(museum_coord) {
@@ -25,19 +36,20 @@ class ArtworkMap extends Component {
           mapTypeId: 'terrain'
         });
 
-    this.MarkerManager = new MarkerManager(this.map, this.handleClick);
-
-    console.log(this.props.coordinates)
+    this.MarkerManager = new MarkerManager(this.map, this.handleClick, this.props.artist_slug_name);
   }
 
   getCoordinates() {
+    this.requestsSent = 0;
+
     for (var i = 0; i < this.props.artworks.length; i++) {
       // fetch artwork coordinates
-      this.requestsSent += 1;
       
       if (this.props.artworks[i].collecting_institution !== "") {
+        this.requestsSent += 1;
         this.props.fetchArtworkLocation(this.props.artworks[i], this.props.artist_slug_name)
       }
+      // debugger
     };
   }
 

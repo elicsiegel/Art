@@ -17,6 +17,22 @@ class ArtistDetail extends Component {
       this.props.fetchArtist(this.props.match.params.artistName);
       this.props.fetchArtworks(this.props.match.params.artistName);
     }
+    if (this.props.artworks) {
+      // debugger
+      if (this.props.coordinates === undefined) {
+        this.getCoordinates();
+      }
+    }
+  }
+
+  getCoordinates() {
+
+    for (var i = 0; i < this.props.artworks.length; i++) {
+      // fetch artwork coordinates
+      if (this.props.artworks[i].collecting_institution !== "") {
+        this.props.fetchArtworkLocation(this.props.artworks[i], this.props.artist_slug_name)
+      }
+    };
   }
 
   calculateThumbnail() {
@@ -84,12 +100,14 @@ class ArtistDetail extends Component {
   }
 
   renderArtworkMap() {
-    if (!this.props.artworks) return; 
+    if (!this.props.artworks || !this.props.coordinates) return; 
     if ( this.props.artworks.length === 0 ) return;
+    if ( this.props.coordinates.length < this.props.numOfCoordinatesToGet ) return;
     
     return (
       <ArtworkMap 
           artworks={this.props.artworks}
+          artist={this.props.artist}
           artist_slug_name={this.props.artist_slug_name}
           coordinates={this.props.coordinates}
           fetchArtworkLocation={this.props.fetchArtworkLocation}/>

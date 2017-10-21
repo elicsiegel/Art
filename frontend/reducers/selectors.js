@@ -21,3 +21,16 @@ export const getSlugName = (name) => {
   };
   return slugName.join('-');
 }
+
+export const numOfCoordinatesToGet = (artworks) => {
+  let num = 0; 
+
+  if (artworks) {
+    artworks.forEach((artwork) => {
+      if (artwork.collecting_institution !== "") {
+        num += 1;
+      }
+    });
+  }
+  return num; 
+}

@@ -3537,6 +3537,19 @@ var getSlugName = exports.getSlugName = function getSlugName(name) {
   return slugName.join('-');
 };
 
+var numOfCoordinatesToGet = exports.numOfCoordinatesToGet = function numOfCoordinatesToGet(artworks) {
+  var num = 0;
+
+  if (artworks) {
+    artworks.forEach(function (artwork) {
+      if (artwork.collecting_institution !== "") {
+        num += 1;
+      }
+    });
+  }
+  return num;
+};
+
 /***/ }),
 /* 52 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -28223,6 +28236,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     artist_slug_name: ownProps.match.params.artistName,
     artist: state.artists[ownProps.match.params.artistName],
     artworks: state.artworks[ownProps.match.params.artistName],
+    numOfCoordinatesToGet: (0, _selectors.numOfCoordinatesToGet)(state.artworks[ownProps.match.params.artistName]),
     coordinates: (0, _selectors.convertToArray)(state.coordinates[ownProps.match.params.artistName])
   };
 };
@@ -28299,6 +28313,23 @@ var ArtistDetail = function (_Component) {
         this.props.fetchArtist(this.props.match.params.artistName);
         this.props.fetchArtworks(this.props.match.params.artistName);
       }
+      if (this.props.artworks) {
+        // debugger
+        if (this.props.coordinates === undefined) {
+          this.getCoordinates();
+        }
+      }
+    }
+  }, {
+    key: 'getCoordinates',
+    value: function getCoordinates() {
+
+      for (var i = 0; i < this.props.artworks.length; i++) {
+        // fetch artwork coordinates
+        if (this.props.artworks[i].collecting_institution !== "") {
+          this.props.fetchArtworkLocation(this.props.artworks[i], this.props.artist_slug_name);
+        }
+      };
     }
   }, {
     key: 'calculateThumbnail',
@@ -28412,11 +28443,13 @@ var ArtistDetail = function (_Component) {
   }, {
     key: 'renderArtworkMap',
     value: function renderArtworkMap() {
-      if (!this.props.artworks) return;
+      if (!this.props.artworks || !this.props.coordinates) return;
       if (this.props.artworks.length === 0) return;
+      if (this.props.coordinates.length < this.props.numOfCoordinatesToGet) return;
 
       return _react2.default.createElement(_artwork_map2.default, {
         artworks: this.props.artworks,
+        artist: this.props.artist,
         artist_slug_name: this.props.artist_slug_name,
         coordinates: this.props.coordinates,
         fetchArtworkLocation: this.props.fetchArtworkLocation });
@@ -28485,16 +28518,27 @@ var ArtworkMap = function (_Component) {
   _createClass(ArtworkMap, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.requestsSent = 0;
-      this.getCoordinates();
+      // debugger
       this.inItMap();
+      this.MarkerManager.updateMarkers(this.props.coordinates, this.props.artworks);
+      // this.getCoordinates();
     }
   }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate() {
-      if (this.props.coordinates && this.requestsSent === this.props.artworks.length) {
+      // write something so that if artist and artworks are already loaded the markers still need to be reset
+      // debugger
+      // if (this.props.coordinates)
+
+      // if (this.props.coordinates && this.props.coordinates.length === this.requestsSent) {
+      //   this.requestsSent = 0;
+      if (this.MarkerManager.artist_slug_name !== this.props.artist_slug_name) {
+        // debugger
+        this.inItMap();
         this.MarkerManager.updateMarkers(this.props.coordinates, this.props.artworks);
       }
+      // this.requestsSent = 0;
+      // }
     }
   }, {
     key: 'handleClick',
@@ -28508,20 +28552,21 @@ var ArtworkMap = function (_Component) {
         mapTypeId: 'terrain'
       });
 
-      this.MarkerManager = new _marker_manager2.default(this.map, this.handleClick);
-
-      console.log(this.props.coordinates);
+      this.MarkerManager = new _marker_manager2.default(this.map, this.handleClick, this.props.artist_slug_name);
     }
   }, {
     key: 'getCoordinates',
     value: function getCoordinates() {
+      this.requestsSent = 0;
+
       for (var i = 0; i < this.props.artworks.length; i++) {
         // fetch artwork coordinates
-        this.requestsSent += 1;
 
         if (this.props.artworks[i].collecting_institution !== "") {
+          this.requestsSent += 1;
           this.props.fetchArtworkLocation(this.props.artworks[i], this.props.artist_slug_name);
         }
+        // debugger
       };
     }
   }, {
@@ -28556,14 +28601,16 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var MarkerManager = function () {
-  function MarkerManager(map, handleClick) {
+  function MarkerManager(map, handleClick, artist_slug_name) {
     _classCallCheck(this, MarkerManager);
 
     this.map = map;
+    this.artist_slug_name = artist_slug_name;
     this.markerBounds = new google.maps.LatLngBounds();
     this.markers = {};
     this.handleClick = handleClick;
     this.markers = {};
+    this.markersArray = [];
   }
 
   _createClass(MarkerManager, [{
@@ -28578,6 +28625,9 @@ var MarkerManager = function () {
       museum_coordinates.forEach(function (newCoord) {
         return _this.createMarkerFromCoord(newCoord, artworks);
       });
+
+      this.markerCluster = new MarkerClusterer(this.map, this.markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+
       google.maps.event.trigger(map, 'resize');
     }
   }, {
@@ -28623,6 +28673,7 @@ var MarkerManager = function () {
 
       // marker.addListener('click', () => this.handleClick(newCoord));
       this.markers[marker.museumId] = marker;
+      this.markersArray.push(marker);
     }
   }]);
 

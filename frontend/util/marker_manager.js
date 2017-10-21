@@ -1,10 +1,12 @@
 export default class MarkerManager {
-  constructor(map, handleClick) {
+  constructor(map, handleClick, artist_slug_name) {
     this.map = map;
+    this.artist_slug_name = artist_slug_name;
     this.markerBounds = new google.maps.LatLngBounds();
     this.markers = {};
     this.handleClick = handleClick;
     this.markers = {};
+    this.markersArray = [];
   }
 
   updateMarkers(museum_coordinates, artworks) {
@@ -12,6 +14,10 @@ export default class MarkerManager {
       .forEach((museumId) => this.removeMarker(this.markers[museumId]));
     
     museum_coordinates.forEach(newCoord => this.createMarkerFromCoord(newCoord, artworks));
+
+    this.markerCluster = new MarkerClusterer(this.map, this.markers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
     google.maps.event.trigger(map, 'resize');
   }
 
@@ -62,6 +68,7 @@ export default class MarkerManager {
 
     // marker.addListener('click', () => this.handleClick(newCoord));
     this.markers[marker.museumId] = marker;
+    this.markersArray.push(marker);
   }
 
 }
