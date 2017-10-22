@@ -15,8 +15,8 @@ export default class MarkerManager {
     
     museum_coordinates.forEach(newCoord => this.createMarkerFromCoord(newCoord, artworks));
 
-    this.markerCluster = new MarkerClusterer(this.map, this.markers,
-            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+    // this.markerCluster = new MarkerClusterer(this.map, this.markers,
+    //         {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 
     google.maps.event.trigger(map, 'resize');
   }
@@ -40,22 +40,11 @@ export default class MarkerManager {
 
     const position = new google.maps.LatLng(lat_ling.lat, lat_ling.lng);
 
-    const contentString = '<div id="content">'+
-            '<div id="siteNotice">'+
-            '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">' + artwork.collecting_institution + '</h1>'+
-            '<div id="bodyContent">'+ artwork.title
-            +
-            '</div>'+
-            '</div>';; 
-
-    const infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
-
     const marker = new google.maps.Marker({
       position,
       map: this.map,
+      lat: newCoord[Object.keys(newCoord)[0]].lat,
+      ling: newCoord[Object.keys(newCoord)[0]].ling,
       museumId: Object.keys(newCoord)[0]
     });
 
@@ -66,8 +55,40 @@ export default class MarkerManager {
       infowindow.open(this.map, marker);
     });
 
+    marker.artworks = [artwork];
+
+    if (this.markers[marker.position.lat().toString() + marker.position.lng().toString()]) {
+      //we have a marker at this position
+      marker.artworks = marker.artworks.concat(this.markers[marker.position.lat().toString() + marker.position.lng().toString()].artworks)
+    }
+
+    let titles = "";
+    marker.artworks.forEach((artwork) => {
+      titles += "<p>" + artwork.title + "</p>"
+    });
+
+    let numWorks = "";
+
+    if (marker.artworks.length === 1) {
+      numWorks = "<h5>1 Artwork</h5>";
+    } else {
+      numWorks = "<h5>" + marker.artworks.length + " Artworks</h5>";
+    }
+
+    const contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">' + artwork.collecting_institution + '</h1>'+
+            '<div id="bodyContent">'+ numWorks + titles
+            + 
+            '</div>'+
+            '</div>';; 
+
+    const infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
     // marker.addListener('click', () => this.handleClick(newCoord));
-    this.markers[marker.museumId] = marker;
+    this.markers[marker.position.lat().toString() + marker.position.lng().toString()] = marker;
     this.markersArray.push(marker);
   }
 
