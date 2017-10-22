@@ -28314,7 +28314,6 @@ var ArtistDetail = function (_Component) {
         this.props.fetchArtworks(this.props.match.params.artistName);
       }
       if (this.props.artworks) {
-        // debugger
         if (this.props.coordinates === undefined) {
           this.getCoordinates();
         }
@@ -28388,11 +28387,6 @@ var ArtistDetail = function (_Component) {
       if (this.props.artworks.length === 0) return;
 
       var artworksList = this.props.artworks.map(function (artwork) {
-
-        var background_photo = {
-          backgroundImage: 'url(' + artwork._links.thumbnail.href + ')',
-          backgroundSize: "cover"
-        };
 
         return _react2.default.createElement(
           'li',
@@ -28543,19 +28537,6 @@ var ArtworkMap = function (_Component) {
       });
 
       this.MarkerManager = new _marker_manager2.default(this.map, this.handleClick, this.props.artist_slug_name);
-    }
-  }, {
-    key: 'getCoordinates',
-    value: function getCoordinates() {
-      this.requestsSent = 0;
-
-      for (var i = 0; i < this.props.artworks.length; i++) {
-        // fetch artwork coordinates 
-        if (this.props.artworks[i].collecting_institution !== "") {
-          this.requestsSent += 1;
-          this.props.fetchArtworkLocation(this.props.artworks[i], this.props.artist_slug_name);
-        }
-      };
     }
   }, {
     key: 'render',

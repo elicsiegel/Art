@@ -30,19 +30,6 @@ class ArtworkMap extends Component {
     this.MarkerManager = new MarkerManager(this.map, this.handleClick, this.props.artist_slug_name);
   }
 
-  getCoordinates() {
-    this.requestsSent = 0;
-
-    for (var i = 0; i < this.props.artworks.length; i++) {
-      // fetch artwork coordinates 
-      if (this.props.artworks[i].collecting_institution !== "") {
-        this.requestsSent += 1;
-        this.props.fetchArtworkLocation(this.props.artworks[i], this.props.artist_slug_name)
-      }
-    };
-  }
-
-
   render() {
 
     return (

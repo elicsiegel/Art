@@ -18,7 +18,6 @@ class ArtistDetail extends Component {
       this.props.fetchArtworks(this.props.match.params.artistName);
     }
     if (this.props.artworks) {
-      // debugger
       if (this.props.coordinates === undefined) {
         this.getCoordinates();
       }
@@ -69,11 +68,6 @@ class ArtistDetail extends Component {
     if ( this.props.artworks.length === 0 ) return;
     
     const artworksList = this.props.artworks.map( artwork => { 
-
-    const background_photo = {
-      backgroundImage: 'url(' + artwork._links.thumbnail.href + ')',
-      backgroundSize: "cover"
-    }
 
       return(
           <li key={artwork.slug}>
