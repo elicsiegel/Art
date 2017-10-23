@@ -28604,8 +28604,7 @@ var MarkerManager = function () {
         return _this.createMarkerFromCoord(newCoord, artworks);
       });
 
-      // this.markerCluster = new MarkerClusterer(this.map, this.markers,
-      //         {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+      this.markerCluster = new MarkerClusterer(this.map, this.markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 
       google.maps.event.trigger(map, 'resize');
     }
