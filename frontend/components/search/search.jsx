@@ -17,7 +17,6 @@ class Search extends React.Component {
     }
 
     this.props.sendSearchQuery(searchQuery);
-    console.log(this.props.artistResults);
   }
 
   calculateSlug(href) {

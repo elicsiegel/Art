@@ -28109,7 +28109,6 @@ var Search = function (_React$Component) {
       }
 
       this.props.sendSearchQuery(searchQuery);
-      console.log(this.props.artistResults);
     }
   }, {
     key: 'calculateSlug',
@@ -28388,10 +28387,17 @@ var ArtistDetail = function (_Component) {
 
       var artworksList = this.props.artworks.map(function (artwork) {
 
+        var artwork_src = void 0;
+        if (artwork._links.thumbnail) {
+          artwork_src = artwork._links.thumbnail.href;
+        } else {
+          artwork_src = "";
+        }
+
         return _react2.default.createElement(
           'li',
           { key: artwork.slug },
-          _react2.default.createElement('img', { src: artwork._links.thumbnail.href }),
+          _react2.default.createElement('img', { src: artwork_src }),
           _react2.default.createElement(
             'div',
             { className: 'artwork-info' },
