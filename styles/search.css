@@ -96,9 +96,7 @@ input {
 }
 
 .stories-search-list-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
   border: 1px solid lightgray;
 }
 
