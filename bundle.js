@@ -28543,9 +28543,18 @@ var ArtworkMap = function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      return _react2.default.createElement('div', { id: 'map', ref: function ref(map) {
-          return _this2.mapNode = map;
-        } });
+      return _react2.default.createElement(
+        'div',
+        { id: 'map-container' },
+        _react2.default.createElement(
+          'h2',
+          null,
+          'Map'
+        ),
+        _react2.default.createElement('div', { id: 'map', ref: function ref(map) {
+            return _this2.mapNode = map;
+          } })
+      );
     }
   }]);
 
@@ -28646,7 +28655,7 @@ var MarkerManager = function () {
 
       var titles = "";
       marker.artworks.forEach(function (artwork) {
-        titles += "<p>" + artwork.title + "</p>";
+        titles += "<div class='artwork-info-box'><p>" + artwork.title + "</p>" + '<img src="' + artwork._links.thumbnail.href + '"height="115" max-width="83"></div>';
       });
 
       var numWorks = "";

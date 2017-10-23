@@ -18,10 +18,19 @@
   margin-right: 8px;
 }
 
-#map {
+#map-container {
   height: 500px;
   width: 75%;
-  /*margin-left: 25%;*/
+}
+
+#map-container h2 {
+  text-align: center;
+  margin-top: 0px;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
 }
 
 .artwork-container {
@@ -31,9 +40,9 @@
 .artwork-list {
   display: flex;
   list-style: none;
-  /*flex-wrap: wrap;*/
   justify-content: center;
   padding: 0px;
+  margin-bottom: 0px;
 }
 
 .artwork-list li {
@@ -57,6 +66,13 @@
   margin-top: 10px;
   max-width: 250px;
   min-height: 200px;
+}
+
+.artwork-info-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
 }
 
 @media (max-width: 900px) { 

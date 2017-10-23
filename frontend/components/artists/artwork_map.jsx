@@ -33,7 +33,10 @@ class ArtworkMap extends Component {
   render() {
 
     return (
-      <div id="map" ref={ map => this.mapNode = map }></div>
+      <div id="map-container">
+        <h2>Map</h2>
+        <div id="map" ref={ map => this.mapNode = map }></div>
+      </div>
     );
   }
 }

@@ -64,7 +64,7 @@ export default class MarkerManager {
 
     let titles = "";
     marker.artworks.forEach((artwork) => {
-      titles += "<p>" + artwork.title + "</p>"
+      titles += "<div class='artwork-info-box'><p>" + artwork.title + "</p>" + '<img src="' + artwork._links.thumbnail.href + '"height="115" max-width="83"></div>'
     });
 
     let numWorks = "";
