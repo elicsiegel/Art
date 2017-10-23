@@ -1,3 +1,24 @@
+.author-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.author-info img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.author-info h4 {
+  margin: 0px;
+}
+
+.links-div > * {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 .artist-container {
   text-align: center;
 }

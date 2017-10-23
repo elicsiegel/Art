@@ -27990,6 +27990,29 @@ var App = function App(props) {
       'div',
       { className: 'title-div' },
       _react2.default.createElement(
+        'div',
+        { className: 'author-info' },
+        _react2.default.createElement(
+          'h4',
+          null,
+          'Eli Siegel'
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'links-div' },
+          _react2.default.createElement(
+            'a',
+            { href: 'https://www.linkedin.com/in/eli-siegel-a26a3b73/' },
+            _react2.default.createElement('img', { src: 'assets/linkedin.png', alt: 'LinkedIn' })
+          ),
+          _react2.default.createElement(
+            'a',
+            { href: 'https://github.com/elicsiegel' },
+            _react2.default.createElement('img', { src: 'assets/github.svg', alt: 'Github' })
+          )
+        )
+      ),
+      _react2.default.createElement(
         'h1',
         null,
         'Art Map'
