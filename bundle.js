@@ -28118,6 +28118,7 @@ var Search = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this, props));
 
     _this.updateResults = _this.updateResults.bind(_this);
+    _this.clearResults = _this.clearResults.bind(_this);
     return _this;
   }
 
@@ -28140,6 +28141,17 @@ var Search = function (_React$Component) {
       var length = slug.length;
 
       return slug[length - 1];
+    }
+  }, {
+    key: 'clearResults',
+    value: function clearResults(event) {
+      // event.stopPropagation();
+
+      if (event.relatedTarget) {
+        return;
+      } else {
+        this.props.clearSearchResults();
+      }
     }
   }, {
     key: 'renderArtists',
@@ -28185,11 +28197,11 @@ var Search = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'search-bar' },
+        { className: 'search-bar', onBlur: this.clearResults },
         _react2.default.createElement('input', { placeholder: 'Type an artist...', onChange: this.updateResults }),
         _react2.default.createElement(
           'div',
-          { className: 'search-list-container', onBlur: this.props.clearSearchResults },
+          { className: 'search-list-container' },
           this.renderArtists()
         )
       );

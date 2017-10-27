@@ -6,6 +6,7 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.updateResults = this.updateResults.bind(this);
+    this.clearResults = this.clearResults.bind(this);
   }
 
   updateResults(event){
@@ -25,6 +26,17 @@ class Search extends React.Component {
 
     return slug[length - 1]
   }
+
+  clearResults(event) {
+    // event.stopPropagation();
+
+    if (event.relatedTarget) {
+      return;
+    } else {
+      this.props.clearSearchResults();
+    }
+  }
+
 
   renderArtists() {
     if ( this.props.artistResults.length === 0 ) return;
@@ -54,9 +66,9 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div className="search-bar">
+      <div className="search-bar" onBlur={this.clearResults}>
         <input placeholder="Type an artist..." onChange={this.updateResults}/>
-        <div className="search-list-container" onBlur={this.props.clearSearchResults}>
+        <div className="search-list-container">
           { this.renderArtists() }
         </div>
       </div>
