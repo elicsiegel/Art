@@ -28020,7 +28020,7 @@ var App = function App(props) {
     ),
     _react2.default.createElement(
       'div',
-      null,
+      { className: 'search-outer-div' },
       _react2.default.createElement(_search_container2.default, null)
     ),
     _react2.default.createElement(
@@ -28145,8 +28145,6 @@ var Search = function (_React$Component) {
   }, {
     key: 'clearResults',
     value: function clearResults(event) {
-      // event.stopPropagation();
-
       if (event.relatedTarget) {
         return;
       } else {

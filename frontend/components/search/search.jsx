@@ -28,8 +28,6 @@ class Search extends React.Component {
   }
 
   clearResults(event) {
-    // event.stopPropagation();
-
     if (event.relatedTarget) {
       return;
     } else {

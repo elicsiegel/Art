@@ -19,7 +19,7 @@ const App = (props) => (
       </div>
       <h1>Art Map</h1>
     </div>
-    <div>
+    <div className="search-outer-div">
       <SearchContainer/>
     </div>
     <div>

@@ -2,6 +2,12 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+.search-outer-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .title-div {
   text-align: center;
 }
