@@ -13,6 +13,7 @@ class ArtworkMap extends Component {
   
     if (this.MarkerManager.artist_slug_name !== this.props.artist_slug_name) {
       this.inItMap();
+      // this.MarkerManager.artist_slug_name = this.props.artist_slug_name
       this.MarkerManager.updateMarkers(this.props.coordinates, this.props.artworks);
     }
     

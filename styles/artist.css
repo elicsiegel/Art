@@ -96,6 +96,11 @@
   margin-bottom: 4px;
 }
 
+#content {
+  text-align: center;
+  margin-left: 15px;
+}
+
 @media (max-width: 900px) { 
   .artwork-list {
     display: block;

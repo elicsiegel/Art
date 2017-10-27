@@ -6,15 +6,15 @@ export default class MarkerManager {
     this.markers = {};
     this.handleClick = handleClick;
     this.markers = {};
-    this.markersArray = [];
   }
 
   updateMarkers(museum_coordinates, artworks) {
+
     Object.keys(this.markers)
-      .forEach((museumId) => this.removeMarker(this.markers[museumId]));
+      .forEach((latLingId) => this.removeMarker(this.markers[latLingId]));
     
     museum_coordinates.forEach(newCoord => this.createMarkerFromCoord(newCoord, artworks));
-
+    
     this.markerCluster = new MarkerClusterer(this.map, this.markers,
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 
@@ -22,8 +22,9 @@ export default class MarkerManager {
   }
 
   removeMarker(marker) {
-    this.markers[marker.museumId].setMap(null);
-    delete this.markers[marker.museumId];
+    marker.setMap(null);
+    delete this.markers[marker.latLingID];
+    marker = null;
   }
 
   createMarkerFromCoord(newCoord, artworks) {
@@ -56,6 +57,7 @@ export default class MarkerManager {
     });
 
     marker.artworks = [artwork];
+    marker.latLingID = marker.position.lat().toString() + marker.position.lng().toString();
 
     if (this.markers[marker.position.lat().toString() + marker.position.lng().toString()]) {
       //we have a marker at this position
@@ -89,7 +91,7 @@ export default class MarkerManager {
         });
     // marker.addListener('click', () => this.handleClick(newCoord));
     this.markers[marker.position.lat().toString() + marker.position.lng().toString()] = marker;
-    this.markersArray.push(marker);
+    // this.markersArray.push(marker);
   }
 
 }

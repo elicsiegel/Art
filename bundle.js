@@ -28550,6 +28550,7 @@ var ArtworkMap = function (_Component) {
 
       if (this.MarkerManager.artist_slug_name !== this.props.artist_slug_name) {
         this.inItMap();
+        // this.MarkerManager.artist_slug_name = this.props.artist_slug_name
         this.MarkerManager.updateMarkers(this.props.coordinates, this.props.artworks);
       }
     }
@@ -28617,7 +28618,6 @@ var MarkerManager = function () {
     this.markers = {};
     this.handleClick = handleClick;
     this.markers = {};
-    this.markersArray = [];
   }
 
   _createClass(MarkerManager, [{
@@ -28625,8 +28625,8 @@ var MarkerManager = function () {
     value: function updateMarkers(museum_coordinates, artworks) {
       var _this = this;
 
-      Object.keys(this.markers).forEach(function (museumId) {
-        return _this.removeMarker(_this.markers[museumId]);
+      Object.keys(this.markers).forEach(function (latLingId) {
+        return _this.removeMarker(_this.markers[latLingId]);
       });
 
       museum_coordinates.forEach(function (newCoord) {
@@ -28640,8 +28640,9 @@ var MarkerManager = function () {
   }, {
     key: 'removeMarker',
     value: function removeMarker(marker) {
-      this.markers[marker.museumId].setMap(null);
-      delete this.markers[marker.museumId];
+      marker.setMap(null);
+      delete this.markers[marker.latLingID];
+      marker = null;
     }
   }, {
     key: 'createMarkerFromCoord',
@@ -28675,6 +28676,7 @@ var MarkerManager = function () {
       });
 
       marker.artworks = [artwork];
+      marker.latLingID = marker.position.lat().toString() + marker.position.lng().toString();
 
       if (this.markers[marker.position.lat().toString() + marker.position.lng().toString()]) {
         //we have a marker at this position
@@ -28701,7 +28703,7 @@ var MarkerManager = function () {
       });
       // marker.addListener('click', () => this.handleClick(newCoord));
       this.markers[marker.position.lat().toString() + marker.position.lng().toString()] = marker;
-      this.markersArray.push(marker);
+      // this.markersArray.push(marker);
     }
   }]);
 
