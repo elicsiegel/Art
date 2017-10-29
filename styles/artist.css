@@ -74,6 +74,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  z-index: 3;
+}
+
+.artwork-list li:hover {
+  cursor: pointer;
 }
 
 .artwork-list li img {
@@ -100,6 +105,10 @@
 #content {
   text-align: center;
   margin-left: 15px;
+}
+
+#bodyContent {
+  overflow-y: scroll; 
 }
 
 @media (max-width: 900px) { 
