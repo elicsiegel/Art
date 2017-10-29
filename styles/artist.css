@@ -103,7 +103,13 @@
 }
 
 @media (max-width: 900px) { 
+  .artist-detail {
+    flex-direction: column;
+  }
   .artwork-list {
     display: block;
+  }
+  #map-container {
+    width: 100%;
   }
 }
