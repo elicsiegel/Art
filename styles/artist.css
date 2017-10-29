@@ -123,3 +123,9 @@
     width: 100%;
   }
 }
+
+@media handheld and (max-width: 900px) {
+  .search-list-container {
+    margin-top: 18px;
+  }
+}
