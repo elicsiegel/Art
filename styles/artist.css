@@ -122,10 +122,16 @@
   #map-container {
     width: 100%;
   }
+  .search-bar input {
+    z-index: 4;
+  }
+  .search-list-container {
+    margin-top: 0px;
+  }
 }
 
-@media handheld and (max-width: 900px) {
+/*@media screen and (max-width: 900px) {
   .search-list-container {
     margin-top: 18px;
   }
-}
+}*/
