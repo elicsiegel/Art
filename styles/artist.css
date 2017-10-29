@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  z-index: 3;
 }
 
 .author-info img {
@@ -14,9 +15,13 @@
   margin: 0px;
 }
 
+.links-div {
+  z-index: 3;
+}
 .links-div > * {
   margin-left: 5px;
   margin-right: 5px;
+  z-index: 3;
 }
 
 .artist-container {
