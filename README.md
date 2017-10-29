@@ -1,6 +1,6 @@
 ## Art Map
 
-[Check it out here](http://elicsiegel.com/Art/)
+[Live](http://elicsiegel.com/Art/)
 
 ### Description
 
