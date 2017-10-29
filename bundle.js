@@ -28712,6 +28712,8 @@ var MarkerManager = function () {
       this.map.fitBounds(this.markerBounds);
 
       marker.addListener('click', function () {
+        this.map.panTo(marker.position);
+        this.map.setZoom(17);
         infowindow.open(this.map, marker);
       });
 
