@@ -28143,13 +28143,17 @@ var Search = function (_React$Component) {
       return slug[length - 1];
     }
   }, {
+    key: 'showResults',
+    value: function showResults() {
+      document.getElementsByClassName('search-list-container')[0].classList.remove("hidden");
+      document.getElementsByClassName('search-bar-clearer')[0].classList.add("clearer-active");
+    }
+  }, {
     key: 'clearResults',
     value: function clearResults(event) {
-      if (event.relatedTarget) {
-        return;
-      } else {
-        this.props.clearSearchResults();
-      }
+      this.props.clearSearchResults;
+      document.getElementsByClassName('search-list-container')[0].classList.add("hidden");
+      document.getElementsByClassName('search-bar-clearer')[0].classList.remove("clearer-active");
     }
   }, {
     key: 'renderArtists',
@@ -28165,7 +28169,7 @@ var Search = function (_React$Component) {
           { className: 'search-list-item', key: artist.title },
           _react2.default.createElement(
             _reactRouterDom.Link,
-            { to: '/artists/' + _this2.calculateSlug(artist._links.permalink.href), className: 'story-search-link', onClick: _this2.props.clearSearchResults },
+            { to: '/artists/' + _this2.calculateSlug(artist._links.permalink.href), className: 'story-search-link', onClick: _this2.clearResults },
             _react2.default.createElement('img', { className: 'search-story-img', src: artist._links.thumbnail.href }),
             _react2.default.createElement(
               'span',
@@ -28195,8 +28199,9 @@ var Search = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'search-bar', onBlur: this.clearResults },
-        _react2.default.createElement('input', { placeholder: 'Type an artist...', onChange: this.updateResults }),
+        { className: 'search-bar' },
+        _react2.default.createElement('div', { className: 'search-bar-clearer', onClick: this.clearResults }),
+        _react2.default.createElement('input', { placeholder: 'Type an artist...', onChange: this.updateResults, onFocus: this.showResults }),
         _react2.default.createElement(
           'div',
           { className: 'search-list-container' },

@@ -27,12 +27,15 @@ class Search extends React.Component {
     return slug[length - 1]
   }
 
+  showResults() {
+    document.getElementsByClassName('search-list-container')[0].classList.remove("hidden");
+    document.getElementsByClassName('search-bar-clearer')[0].classList.add("clearer-active");
+  }
+
   clearResults(event) {
-    if (event.relatedTarget) {
-      return;
-    } else {
-      this.props.clearSearchResults();
-    }
+    this.props.clearSearchResults
+    document.getElementsByClassName('search-list-container')[0].classList.add("hidden");
+    document.getElementsByClassName('search-bar-clearer')[0].classList.remove("clearer-active");
   }
 
 
@@ -43,7 +46,7 @@ class Search extends React.Component {
     const artistsList = this.props.artistResults.map( artist => { 
       return(
           <li className="search-list-item" key={artist.title}>
-            <Link to={`/artists/${ this.calculateSlug(artist._links.permalink.href) }`} className={'story-search-link'} onClick={this.props.clearSearchResults}>
+            <Link to={`/artists/${ this.calculateSlug(artist._links.permalink.href) }`} className={'story-search-link'} onClick={this.clearResults}>
               
                 <img className="search-story-img" src={artist._links.thumbnail.href} />
                 <span>{ artist.title }</span>
@@ -64,8 +67,10 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div className="search-bar" onBlur={this.clearResults}>
-        <input placeholder="Type an artist..." onChange={this.updateResults}/>
+      <div className="search-bar">
+        <div className="search-bar-clearer" onClick={this.clearResults}>
+        </div>
+        <input placeholder="Type an artist..." onChange={this.updateResults} onFocus={this.showResults}/>
         <div className="search-list-container">
           { this.renderArtists() }
         </div>

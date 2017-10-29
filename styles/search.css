@@ -2,6 +2,23 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+.hidden {
+  display: none;
+}
+
+.search-bar-clearer {
+  background-color: transparent;
+  position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 390px;
+}
+
+.search-bar-clearer.clearer-active {
+  position: fixed;
+    right: 0;
+}
+
 .search-outer-div {
   display: flex;
   align-items: center;
@@ -48,6 +65,7 @@ input {
   display: flex;
   align-items: center;
   flex-direction: column;
+  z-index: 2;
 }
 
 #search-glass {
@@ -57,6 +75,7 @@ input {
 
 .search-bar input {
   outline: none;
+  z-index: 3;
 }
 
 .search-story-img {
@@ -78,6 +97,7 @@ input {
 }
 
 .search-list-container {
+  z-index: 3;
   margin-top: 26px;
   position: absolute;
   background: white;
