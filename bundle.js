@@ -28161,7 +28161,6 @@ var Search = function (_React$Component) {
       var _this2 = this;
 
       if (this.props.artistResults.length === 0) return;
-      // if ( !this.props.searchResultsVisible ) return;
 
       var artistsList = this.props.artistResults.map(function (artist) {
         return _react2.default.createElement(

@@ -33,7 +33,7 @@ class Search extends React.Component {
   }
 
   clearResults(event) {
-    this.props.clearSearchResults
+    this.props.clearSearchResults;
     document.getElementsByClassName('search-list-container')[0].classList.add("hidden");
     document.getElementsByClassName('search-bar-clearer')[0].classList.remove("clearer-active");
   }
@@ -41,7 +41,6 @@ class Search extends React.Component {
 
   renderArtists() {
     if ( this.props.artistResults.length === 0 ) return;
-    // if ( !this.props.searchResultsVisible ) return;
     
     const artistsList = this.props.artistResults.map( artist => { 
       return(
