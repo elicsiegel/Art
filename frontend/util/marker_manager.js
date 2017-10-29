@@ -6,6 +6,7 @@ export default class MarkerManager {
     this.markers = {};
     this.handleClick = handleClick;
     this.markers = {};
+    this.addListenersForArtworkLis = this.addListenersForArtworkLis.bind(this);
   }
 
   updateMarkers(museum_coordinates, artworks) {
@@ -24,13 +25,17 @@ export default class MarkerManager {
   }
 
   addListenersForArtworkLis(marker) {
-    marker.artworks.forEach((artwork) => {
+    for (var i = 0; i <= marker.artworks.length - 1; i++) {
+      const artwork = marker.artworks[i];
       const element = document.getElementById(artwork.slug);
+      const map = this.map;
       element.addEventListener('click', function() {
+        map.setZoom(17);
+        map.panTo(marker.position);
         document.getElementById('map').scrollIntoView();
         marker.infowindow.open(this.map, marker);
       });
-    });
+    };
   }
 
   removeMarker(marker) {

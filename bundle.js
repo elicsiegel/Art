@@ -28632,6 +28632,7 @@ var MarkerManager = function () {
     this.markers = {};
     this.handleClick = handleClick;
     this.markers = {};
+    this.addListenersForArtworkLis = this.addListenersForArtworkLis.bind(this);
   }
 
   _createClass(MarkerManager, [{
@@ -28658,13 +28659,23 @@ var MarkerManager = function () {
   }, {
     key: 'addListenersForArtworkLis',
     value: function addListenersForArtworkLis(marker) {
-      marker.artworks.forEach(function (artwork) {
+      var _this2 = this;
+
+      var _loop = function _loop() {
+        var artwork = marker.artworks[i];
         var element = document.getElementById(artwork.slug);
+        var map = _this2.map;
         element.addEventListener('click', function () {
+          map.setZoom(17);
+          map.panTo(marker.position);
           document.getElementById('map').scrollIntoView();
           marker.infowindow.open(this.map, marker);
         });
-      });
+      };
+
+      for (var i = 0; i <= marker.artworks.length - 1; i++) {
+        _loop();
+      };
     }
   }, {
     key: 'removeMarker',
