@@ -77,7 +77,7 @@ class ArtistDetail extends Component {
     }
 
       return(
-          <li key={artwork.slug}>
+          <li key={artwork.slug} id={artwork.slug}>
             <img src={artwork_src} />
             <div className="artwork-info">
               <h4>{artwork.title}</h4>

@@ -15,10 +15,22 @@ export default class MarkerManager {
     
     museum_coordinates.forEach(newCoord => this.createMarkerFromCoord(newCoord, artworks));
     
+    Object.keys(this.markers).forEach((latLingId => this.addListenersForArtworkLis(this.markers[latLingId])));
+
     this.markerCluster = new MarkerClusterer(this.map, this.markers,
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 
     google.maps.event.trigger(map, 'resize');
+  }
+
+  addListenersForArtworkLis(marker) {
+    marker.artworks.forEach((artwork) => {
+      const element = document.getElementById(artwork.slug);
+      element.addEventListener('click', function() {
+        document.getElementById('map').scrollIntoView();
+        marker.infowindow.open(this.map, marker);
+      });
+    });
   }
 
   removeMarker(marker) {
@@ -68,6 +80,7 @@ export default class MarkerManager {
     marker.artworks.forEach((artwork) => {
       titles += "<div class='artwork-info-box'><p>" + artwork.title + "</p>" + '<img src="' + artwork._links.thumbnail.href + '"height="115" max-width="83"></div>'
     });
+    
 
     let numWorks = "";
 
@@ -89,6 +102,7 @@ export default class MarkerManager {
     const infowindow = new google.maps.InfoWindow({
           content: contentString
         });
+    marker.infowindow = infowindow;
     // marker.addListener('click', () => this.handleClick(newCoord));
     this.markers[marker.position.lat().toString() + marker.position.lng().toString()] = marker;
     // this.markersArray.push(marker);

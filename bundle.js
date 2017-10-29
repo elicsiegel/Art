@@ -28433,7 +28433,7 @@ var ArtistDetail = function (_Component) {
 
         return _react2.default.createElement(
           'li',
-          { key: artwork.slug },
+          { key: artwork.slug, id: artwork.slug },
           _react2.default.createElement('img', { src: artwork_src }),
           _react2.default.createElement(
             'div',
@@ -28647,9 +28647,24 @@ var MarkerManager = function () {
         return _this.createMarkerFromCoord(newCoord, artworks);
       });
 
+      Object.keys(this.markers).forEach(function (latLingId) {
+        return _this.addListenersForArtworkLis(_this.markers[latLingId]);
+      });
+
       this.markerCluster = new MarkerClusterer(this.map, this.markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 
       google.maps.event.trigger(map, 'resize');
+    }
+  }, {
+    key: 'addListenersForArtworkLis',
+    value: function addListenersForArtworkLis(marker) {
+      marker.artworks.forEach(function (artwork) {
+        var element = document.getElementById(artwork.slug);
+        element.addEventListener('click', function () {
+          document.getElementById('map').scrollIntoView();
+          marker.infowindow.open(this.map, marker);
+        });
+      });
     }
   }, {
     key: 'removeMarker',
@@ -28715,6 +28730,7 @@ var MarkerManager = function () {
       var infowindow = new google.maps.InfoWindow({
         content: contentString
       });
+      marker.infowindow = infowindow;
       // marker.addListener('click', () => this.handleClick(newCoord));
       this.markers[marker.position.lat().toString() + marker.position.lng().toString()] = marker;
       // this.markersArray.push(marker);
