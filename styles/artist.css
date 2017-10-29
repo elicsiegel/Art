@@ -110,6 +110,7 @@
     display: block;
   }
   #map-container {
+    height: 300px;
     width: 100%;
   }
 }
