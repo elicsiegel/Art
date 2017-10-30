@@ -71,7 +71,7 @@ export default class MarkerManager {
 
     marker.addListener('click', function() {
       this.map.panTo(marker.position);
-      this.map.setZoom(17);
+      this.map.setZoom(5);
       infowindow.open(this.map, marker);
     });
 
