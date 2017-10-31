@@ -2,6 +2,8 @@
 
 [Live](http://elicsiegel.com/Art/)
 
+![main](./assets/home.png)
+
 ### Description
 
 Art Map allows users to search an artist to see where his or her artworks are located around the world. The application is written in React/Redux. It uses the Artsy API to access information about the artist and his/her artworks and uses the Google Maps API to locate these works of art on a map.
