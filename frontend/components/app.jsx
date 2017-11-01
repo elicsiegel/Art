@@ -7,7 +7,9 @@ const App = (props) => (
   <div>
     <div className="title-div">
       <div className="author-info">
-        <h4>Eli Siegel</h4> 
+        <a href="http://www.elicsiegel.com">
+          <h4>Eli Siegel</h4> 
+        </a>
         <div className="links-div"> 
           <a href="https://www.linkedin.com/in/eli-siegel-a26a3b73/">
             <img src="assets/linkedin.png" alt="LinkedIn"/>

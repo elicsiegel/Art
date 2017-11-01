@@ -11,6 +11,12 @@
   cursor: pointer;
 }
 
+.author-info a {
+  z-index: 3;
+  text-decoration: none;
+  color: black;
+}
+
 .author-info h4 {
   margin: 0px;
 }

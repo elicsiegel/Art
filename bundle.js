@@ -27993,9 +27993,13 @@ var App = function App(props) {
         'div',
         { className: 'author-info' },
         _react2.default.createElement(
-          'h4',
-          null,
-          'Eli Siegel'
+          'a',
+          { href: 'http://www.elicsiegel.com' },
+          _react2.default.createElement(
+            'h4',
+            null,
+            'Eli Siegel'
+          )
         ),
         _react2.default.createElement(
           'div',
