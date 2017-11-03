@@ -14,7 +14,7 @@ Type an artists name in the search bar. Corresponding results will appear. Click
 
 User interaction was implemented via an input box that sends search queries to the Artsy API based on user input.
 
-```
+```javascript
 updateResults(event){
     const searchQuery = event.target.value;
   
@@ -24,5 +24,5 @@ updateResults(event){
     }
 
     this.props.sendSearchQuery(searchQuery);
-  }
+}
 ```
