@@ -28771,7 +28771,7 @@ exports.default = MarkerManager;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var xappToken = exports.xappToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUwOTkyMDg2NywiaWF0IjoxNTA5MzE2MDY3LCJhdWQiOiI1OWRmYWI4M2EwOWE2NzI1NDk0YzNiZjAiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNTlmNjU1ZTMxMzliMjEyYjZkNGEwMWY0In0.WIgQfWZSLciQmy2GinoHsESqKBx48REd90hZr2d6fMc";
+var xappToken = exports.xappToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUxMDUwOTUxMiwiaWF0IjoxNTA5OTA0NzEyLCJhdWQiOiI1OWU5MDZiY2EwOWE2NzE2NmVlZjgwMjYiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNTlmZjUxNDg4YjNiODE3NDRiNjg3NWM1In0.wNayDnjPEtEps-O4mJiqjv7xryXEiWuDYhoqXzpTEwc";
 
 var fetchArtist = exports.fetchArtist = function fetchArtist(slug_name) {
   return $.ajax({

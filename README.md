@@ -26,3 +26,8 @@ updateResults(event){
     this.props.sendSearchQuery(searchQuery);
 }
 ```
+### Features
+
+#### Artwork List
+
+#### Artwork Map
