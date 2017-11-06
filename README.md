@@ -30,4 +30,15 @@ updateResults(event){
 
 #### Artwork List
 
+Renders a list of artworks corresponding to the current selected artist. Clicking on an artwork will open up its info box in the Artwork Map below.
+
 #### Artwork Map
+
+Using coordinates received from the Google Maps API, the Artwork Map component places each artwork on the map at the museum in which it is housed. The marker clusterer library is used to cluster nearby markers together. 
+
+```javascript
+museum_coordinates.forEach(newCoord => this.createMarkerFromCoord(newCoord, artworks));
+
+this.markerCluster = new MarkerClusterer(this.map, this.markers,
+        {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+```
