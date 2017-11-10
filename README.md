@@ -17,11 +17,6 @@ User interaction was implemented via an input box that sends search queries to t
 ```javascript
 updateResults(event){
     const searchQuery = event.target.value;
-  
-    if ( searchQuery.length < 2 ) {
-      this.props.clearSearchResults();
-      return;
-    }
 
     this.props.sendSearchQuery(searchQuery);
 }
@@ -36,7 +31,7 @@ Renders a list of artworks corresponding to the current selected artist. Clickin
 
 #### Artwork Map
 
-After receiving coordinates from the Google Maps API, the Artwork Map component uses the MarkerManager class to place each artwork on the map at the museum in which it is housed. The marker clusterer library is used to cluster nearby markers together. 
+After receiving coordinates from the Google Maps API, the Artwork Map component uses the MarkerManager class to place each artwork on the map at the museum in which it is housed. The marker clusterer library is used to cluster nearby markers together.
 
 ```javascript
 museum_coordinates.forEach(newCoord => this.createMarkerFromCoord(newCoord, artworks));
