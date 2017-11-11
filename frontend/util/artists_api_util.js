@@ -1,4 +1,4 @@
-export const xappToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUxMDUwOTUxMiwiaWF0IjoxNTA5OTA0NzEyLCJhdWQiOiI1OWU5MDZiY2EwOWE2NzE2NmVlZjgwMjYiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNTlmZjUxNDg4YjNiODE3NDRiNjg3NWM1In0.wNayDnjPEtEps-O4mJiqjv7xryXEiWuDYhoqXzpTEwc";
+export const xappToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUxMTAzMTk3NSwiaWF0IjoxNTEwNDI3MTc1LCJhdWQiOiI1OWU5MDZiY2EwOWE2NzE2NmVlZjgwMjYiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWEwNzRhMjcyYTg5M2EzOGU3OTIzNmJmIn0.Ugj4X5EtZo-NkIIEGW8f5M4GiyTXm67waDjGo1gvC58";
 
 export const fetchArtist = (slug_name) => {
   return  $.ajax({
@@ -8,4 +8,3 @@ export const fetchArtist = (slug_name) => {
     error: (err) => console.log(err),
   });
 }
-
