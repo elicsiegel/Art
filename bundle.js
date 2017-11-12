@@ -3925,14 +3925,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 document.addEventListener("DOMContentLoaded", function () {
 
   var store = (0, _store2.default)();
-
-  window.receiveArtist = _artists_actions.receiveArtist;
-  window.fetchArtist = _artists_actions.fetchArtist;
-
-  window.store = store;
-  window.dispatch = store.dispatch;
-
   var root = document.getElementById("root");
+
   _reactDom2.default.render(_react2.default.createElement(_root2.default, { store: store }), root);
 });
 

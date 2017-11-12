@@ -10,13 +10,7 @@ import {fetchArtist} from './actions/artists_actions';
 document.addEventListener("DOMContentLoaded", () => {
 
   const store = configureStore();
+  const root = document.getElementById("root");
 
-  window.receiveArtist = receiveArtist;
-  window.fetchArtist = fetchArtist;
-
-  window.store = store; 
-  window.dispatch = store.dispatch;
-  
-	const root = document.getElementById("root");
 	ReactDOM.render(<Root store={store} />, root);
 });
