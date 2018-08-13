@@ -27,7 +27,15 @@ body {
 }
 
 .title-div {
+  background: lightblue;
   text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+  z-index: 10000;
 }
 
 .search-input-div {
