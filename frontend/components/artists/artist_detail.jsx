@@ -116,7 +116,10 @@ class ArtistDetail extends Component {
   }
 
   render() {
-    
+    var x = document.getElementsByTagName("html")[0]
+    if (x) {
+      x.classList.remove("backgroundMap")
+    }
     return (
       <div className="artist-info">
         

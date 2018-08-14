@@ -28249,6 +28249,10 @@ var _artist_detail_container = __webpack_require__(125);
 
 var _artist_detail_container2 = _interopRequireDefault(_artist_detail_container);
 
+var _background_map = __webpack_require__(139);
+
+var _background_map2 = _interopRequireDefault(_background_map);
+
 var _nav = __webpack_require__(130);
 
 var _nav2 = _interopRequireDefault(_nav);
@@ -28256,14 +28260,20 @@ var _nav2 = _interopRequireDefault(_nav);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App(props) {
+
   return _react2.default.createElement(
     'div',
     null,
     _react2.default.createElement(_nav2.default, null),
     _react2.default.createElement(
       'div',
-      null,
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/artists/:artistName', exact: true, component: _artist_detail_container2.default })
+      { className: 'artist-wrapper' },
+      _react2.default.createElement(
+        _reactRouterDom.Switch,
+        null,
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/artists/:artistName', exact: true, component: _artist_detail_container2.default }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/', exact: true, component: _background_map2.default })
+      )
     )
   );
 };
@@ -28724,7 +28734,10 @@ var ArtistDetail = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-
+      var x = document.getElementsByTagName("html")[0];
+      if (x) {
+        x.classList.remove("backgroundMap");
+      }
       return _react2.default.createElement(
         'div',
         { className: 'artist-info' },
@@ -29358,6 +29371,31 @@ var coordinatesReducer = function coordinatesReducer() {
 };
 
 exports.default = coordinatesReducer;
+
+/***/ }),
+/* 139 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var backgroundMap = function backgroundMap(props) {
+  var x = document.getElementsByTagName("html")[0];
+  x.classList.add("backgroundMap");
+  return _react2.default.createElement("div", null);
+};
+
+exports.default = backgroundMap;
 
 /***/ })
 /******/ ]);

@@ -1,6 +1,14 @@
 html {
-  /*background: url(https://geology.com/world/world-map.gif);
-  background-size: cover;*/
+  /*background: gray;*/
+}
+
+.artistWrapperEmpty {
+  background: blue;
+}
+
+.backgroundMap {
+  background: url(http://www.100besteverything.com/best-artists/i-52-18453_jasperjohns-wp2.jpg);
+  background-size: cover;
 }
 
 .author-info {
