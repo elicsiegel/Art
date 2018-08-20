@@ -29085,6 +29085,8 @@ var _search_container = __webpack_require__(53);
 
 var _search_container2 = _interopRequireDefault(_search_container);
 
+var _reactRouterDom = __webpack_require__(13);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Nav = function Nav(props) {
@@ -29092,9 +29094,13 @@ var Nav = function Nav(props) {
     'div',
     { className: 'title-div' },
     _react2.default.createElement(
-      'h1',
-      null,
-      'Art Map'
+      _reactRouterDom.Link,
+      { id: 'HomeLink', to: '/' },
+      _react2.default.createElement(
+        'h1',
+        null,
+        'Art Map'
+      )
     ),
     _react2.default.createElement(
       'div',

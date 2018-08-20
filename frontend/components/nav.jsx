@@ -1,10 +1,11 @@
 import React from 'react';
 import SearchContainer from './search/search_container';
+import { Link } from 'react-router-dom';
 
 const Nav = (props) => {
     return ( 
       <div className="title-div">
-        <h1>Art Map</h1>
+        <Link id="HomeLink" to="/"><h1>Art Map</h1></Link>
         <div className="search-outer-div">
           <SearchContainer/>
         </div>

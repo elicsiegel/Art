@@ -2,6 +2,11 @@ html {
   /*background: gray;*/
 }
 
+#HomeLink {
+  text-decoration: none;
+  color: black;
+}
+
 .artistWrapperEmpty {
   background: blue;
 }
