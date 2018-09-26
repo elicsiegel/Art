@@ -1780,7 +1780,7 @@ var createTransitionManager = function createTransitionManager() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var xappToken = exports.xappToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUzODMyNTI3MiwiaWF0IjoxNTM3NzIwNDcyLCJhdWQiOiI1OWQ1YTkxZmM5ZGMyNDE5MGIwNjkxMzYiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWJhN2MwOThmMTkyMGU0NTdjZmJjN2UxIn0.CT_nBFBtfRLAp74qI3AcCGaX0D4DEqgVVs4VWfSIsD4";
+var xappToken = exports.xappToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsImV4cCI6MTUzODU3ODY5NSwiaWF0IjoxNTM3OTczODk1LCJhdWQiOiI1OWQ1YTkxZmM5ZGMyNDE5MGIwNjkxMzYiLCJpc3MiOiJHcmF2aXR5IiwianRpIjoiNWJhYjllODc0NTU1M2M1ZmE5YmNmMjc4In0.fjrhvfWOUonGNBL9P_mwtbPTdqocYxVJuoTBAkzJMmE";
 
 var fetchArtist = exports.fetchArtist = function fetchArtist(slug_name) {
   return $.ajax({
